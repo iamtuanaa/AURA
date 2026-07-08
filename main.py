@@ -1,5 +1,7 @@
 from datetime import datetime
 from modules.memory import load_user, save_user
+from modules.notes import add_note, show_notes
+from modules.chat import chat
 
 print("=" * 45)
 print("🤖 Welcome to AURA")
@@ -22,8 +24,10 @@ while True:
     print("\n===== MENU =====")
     print("1 - Say Hello")
     print("2 - Tell Time")
-    print("3 - Exit")
-
+    print("3 - Add Note")
+    print("4 - Show Notes")
+    print("5 - Chat with AURA")
+    print("6 - Exit")
     choice = input("Choose: ")
 
     if choice == "1":
@@ -34,8 +38,16 @@ while True:
         print(f"\nCurrent Time: {now.strftime('%H:%M:%S')}")
 
     elif choice == "3":
+      add_note()
+
+    elif choice == "4":
+     show_notes()
+
+    elif choice == "5":
+     chat()
+
+    elif choice == "6":
         print("\nGoodbye! 👋")
         break
-
     else:
         print("\nInvalid option!")
