@@ -1,25 +1,18 @@
 from datetime import datetime
+from modules.memory import load_user, save_user
 
 print("=" * 45)
 print("🤖 Welcome to AURA")
 print("=" * 45)
 
 # Kullanıcıyı hafızadan oku
-dosya = open("memory/user.txt", "r")
-name = dosya.read().strip()
-dosya.close()
+name = load_user()
 
-# Eğer hafıza boşsa kullanıcıdan isim al
+# Hafıza boşsa isim iste
 if name == "":
     name = input("What is your name? ")
-
-    dosya = open("memory/user.txt", "w")
-    dosya.write(name)
-    dosya.close()
-
+    save_user(name)
     print(f"\nWelcome, {name}! 🚀")
-
-# Hafızada isim varsa
 else:
     print(f"\nWelcome back, {name}! 🌸")
 
