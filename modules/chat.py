@@ -1,21 +1,39 @@
+from modules.brain import get_answer, save_answer
+
+
 def chat():
 
-    message = input("\nYou: ").lower()
+    print("\n🤖 Chat Mode")
+    print("Type 'exit' to return to the menu.\n")
 
-    if "hello" in message or "hi" in message:
-        print("🤖 AURA: Hello Tuana! Nice to see you.")
+    while True:
 
-    elif "how are you" in message:
-        print("🤖 AURA: I'm feeling great! Thanks for asking. 💙")
+        message = input("You: ")
 
-    elif "your name" in message:
-        print("🤖 AURA: My name is AURA.")
+        if message.lower() == "exit":
+            print("Leaving chat...\n")
+            break
 
-    elif "who made you" in message:
-        print("🤖 AURA: I was created by Tuana Bilgin. 🚀")
+        answer = get_answer(message)
 
-    elif "python" in message:
-        print("🤖 AURA: Python is my favorite language!")
+        if answer is None:
 
-    else:
-        print("🤖 AURA: I don't know how to answer that yet.")
+            print("🤖 I don't know the answer.")
+
+            teach = input("Teach me? (yes/no): ")
+
+            if teach.lower() == "yes":
+
+                new_answer = input("What should I answer? ")
+
+                save_answer(message, new_answer)
+
+                print("✅ Thanks! I learned something new!")
+
+            else:
+
+                print("😊 Okay!")
+
+        else:
+
+            print(f"🤖 AURA: {answer}")

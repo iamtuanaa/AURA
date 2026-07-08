@@ -1,0 +1,14 @@
+hello=Hello Tuana! 👋
+
+hi=Hello! 😊
+
+how are you=I'm doing great!
+
+python=Python is awesome!
+
+who made you=I was created by Tuana Bilgin.
+
+goodbye=See you later!
+favorite color=red, also black, also purple ;)
+your creator=My creator is Tuana Bilgin.
+favorite movie=Interstellar
