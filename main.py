@@ -1,13 +1,29 @@
+from datetime import datetime
+
 print("=" * 45)
 print("🤖 Welcome to AURA")
 print("=" * 45)
 
-name = input("What is your name? ")
+# Kullanıcıyı hafızadan oku
+dosya = open("memory/user.txt", "r")
+name = dosya.read().strip()
+dosya.close()
 
-print()
+# Eğer hafıza boşsa kullanıcıdan isim al
+if name == "":
+    name = input("What is your name? ")
 
-print(f"Welcome, {name}! 🚀")
+    dosya = open("memory/user.txt", "w")
+    dosya.write(name)
+    dosya.close()
 
+    print(f"\nWelcome, {name}! 🚀")
+
+# Hafızada isim varsa
+else:
+    print(f"\nWelcome back, {name}! 🌸")
+
+# Ana menü
 while True:
 
     print("\n===== MENU =====")
@@ -18,22 +34,15 @@ while True:
     choice = input("Choose: ")
 
     if choice == "1":
-        print(f"Hello {name}! 👋")
+        print(f"\nHello {name}! 👋")
 
     elif choice == "2":
-
-        from datetime import datetime
-
         now = datetime.now()
-
-        print(now.strftime("%H:%M:%S"))
+        print(f"\nCurrent Time: {now.strftime('%H:%M:%S')}")
 
     elif choice == "3":
-
-        print("Goodbye!")
-
+        print("\nGoodbye! 👋")
         break
 
     else:
-
-        print("Invalid option.")
+        print("\nInvalid option!")
