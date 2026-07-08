@@ -1,0 +1,7 @@
+{
+    "hello": "Hello Tuana! 👋",
+    "hi": "Hello! 😊",
+    "python": "Python is awesome! 🐍",
+    "who made you": "I was created by Tuana Bilgin. 🚀",
+    "favorite movie": "Interstellar 🚀"
+}

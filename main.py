@@ -2,9 +2,14 @@ from datetime import datetime
 from modules.memory import load_user, save_user
 from modules.notes import add_note, show_notes
 from modules.chat import chat
+from modules.config import load_config
+
+config = load_config()
 
 print("=" * 45)
-print("🤖 Welcome to AURA")
+print(f"🤖 Welcome to {config['name']}")
+print(f"Version: {config['version']}")
+print(f"Creator: {config['creator']}")
 print("=" * 45)
 
 # Kullanıcıyı hafızadan oku

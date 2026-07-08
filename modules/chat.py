@@ -4,7 +4,7 @@ from modules.brain import get_answer, save_answer
 def chat():
 
     print("\n🤖 Chat Mode")
-    print("Type 'exit' to return to the menu.\n")
+    print("Type 'exit' to return to menu.\n")
 
     while True:
 
@@ -32,7 +32,7 @@ def chat():
 
             else:
 
-                print("😊 Okay!")
+                print("😊 Maybe next time!")
 
         else:
 

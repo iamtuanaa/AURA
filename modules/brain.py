@@ -1,27 +1,23 @@
+import json
+
+
 def get_answer(question):
 
-    dosya = open("data/brain.txt", "r")
+    with open("data/brain.json", "r") as file:
 
-    for satir in dosya:
+        brain = json.load(file)
 
-        satir = satir.strip()
-
-        if "=" in satir:
-
-            soru, cevap = satir.split("=", 1)
-
-            if soru.lower() == question.lower():
-                dosya.close()
-                return cevap
-
-    dosya.close()
-    return None
+    return brain.get(question.lower())
 
 
 def save_answer(question, answer):
 
-    dosya = open("data/brain.txt", "a")
+    with open("data/brain.json", "r") as file:
 
-    dosya.write(f"\n{question.lower()}={answer}")
+        brain = json.load(file)
 
-    dosya.close()
+    brain[question.lower()] = answer
+
+    with open("data/brain.json", "w") as file:
+
+        json.dump(brain, file, indent=4)
