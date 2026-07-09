@@ -1,48 +1,36 @@
 from modules.brain import get_answer, save_answer
 
-PINK = "\033[95m"
-RESET = "\033[0m"
-CYAN = "\033[96m"
+# AURA'nın öğrenmeye çalıştığı soru
+learning_question = None
 
-def chat():
 
-    print(PINK)
-    print("══════════════════════════════")
-    print("🤖      AURA CHAT MODE")
-    print("══════════════════════════════")
-    print(RESET)
+def process_message(message):
+    global learning_question
 
-    print("Type 'exit' to return.\n")
-    print("Type 'exit' to return to menu.\n")
+    message = message.strip()
 
-    while True:
+    if message == "":
+        return "Please type a message."
 
-        message = input(CYAN + "👤 You: " + RESET)
+    # Eğer AURA öğrenme modundaysa
+    if learning_question is not None:
 
-        if message.lower() == "exit":
-            print("Leaving chat...\n")
-            break
+        save_answer(learning_question, message)
 
-        answer = get_answer(message)
+        learning_question = None
 
-        if answer is None:
+        return "💖 Thank you! I'll remember that."
 
-            print("🤖 I don't know the answer.")
+    # Bilinen cevap var mı?
+    answer = get_answer(message)
 
-            teach = input("Teach me? (yes/no): ")
+    if answer is None:
 
-            if teach.lower() == "yes":
+        learning_question = message
 
-                new_answer = input("What should I answer? ")
+        return (
+            "🤔 I don't know the answer yet.\n"
+            "What should I answer next time?"
+        )
 
-                save_answer(message, new_answer)
-
-                print("✅ Thanks! I learned something new!")
-
-            else:
-
-                print("😊 Maybe next time!")
-
-        else:
-
-            print(PINK + f"🤖 AURA: {answer}" + RESET)
+    return answer

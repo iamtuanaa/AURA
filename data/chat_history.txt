@@ -1,0 +1,9 @@
+👤 You: favorite season
+🤖 AURA: spring
+👤 You: favorite singer
+🤖 AURA: 🤔 I don't know the answer yet.
+What should I answer next time?
+👤 You: Motive
+🤖 AURA: 💖 Thank you! I'll remember that.
+👤 You: favorite singer
+🤖 AURA: Motive

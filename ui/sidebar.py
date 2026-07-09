@@ -1,43 +1,48 @@
 import customtkinter as ctk
-from ui.colors import *
+
+PINK = "#ff66cc"
+HOVER = "#ff4db8"
 
 
-def create_sidebar(parent):
-
-    sidebar = ctk.CTkFrame(
-        parent,
-        width=220,
-        fg_color=SIDEBAR,
-        corner_radius=0
-    )
-
-    sidebar.pack(side="left", fill="y")
+def create_sidebar(parent, chat, notes, memory, settings):
 
     logo = ctk.CTkLabel(
-        sidebar,
+        parent,
         text="💖 AURA",
-        font=("Helvetica", 28, "bold"),
+        font=("Helvetica", 30, "bold"),
         text_color=PINK
     )
 
-    logo.pack(pady=(30, 40))
+    logo.pack(pady=(40, 40))
 
-    pages = [
-        "💬 Chat",
-        "📝 Notes",
-        "🧠 Memory",
-        "⚙️ Settings"
-    ]
+    ctk.CTkButton(
+        parent,
+        text="💬 Chat",
+        command=chat,
+        fg_color=PINK,
+        hover_color=HOVER
+    ).pack(fill="x", padx=20, pady=10)
 
-    for page in pages:
-        button = ctk.CTkButton(
-            sidebar,
-            text=page,
-            fg_color=PINK,
-            hover_color=HOVER,
-            corner_radius=12
-        )
+    ctk.CTkButton(
+        parent,
+        text="📝 Notes",
+        command=notes,
+        fg_color=PINK,
+        hover_color=HOVER
+    ).pack(fill="x", padx=20, pady=10)
 
-        button.pack(fill="x", padx=20, pady=10)
+    ctk.CTkButton(
+        parent,
+        text="🧠 Memory",
+        command=memory,
+        fg_color=PINK,
+        hover_color=HOVER
+    ).pack(fill="x", padx=20, pady=10)
 
-    return sidebar
+    ctk.CTkButton(
+        parent,
+        text="⚙️ Settings",
+        command=settings,
+        fg_color=PINK,
+        hover_color=HOVER
+    ).pack(fill="x", padx=20, pady=10)
