@@ -12,42 +12,50 @@ def create_memory(parent):
     title = ctk.CTkLabel(
         frame,
         text="🧠 AURA MEMORY",
-        font=("Helvetica", 28, "bold")
+        font=("Helvetica", 30, "bold")
     )
-
     title.pack(pady=20)
 
-    name = load_user()
+    username = load_user()
 
-    user = ctk.CTkLabel(
+    user_label = ctk.CTkLabel(
         frame,
-        text=f"👤 User: {name}",
+        text=f"👤 User: {username}",
         font=("Helvetica", 18)
     )
+    user_label.pack()
 
-    user.pack(pady=10)
+    chat_box = ctk.CTkTextbox(
+        frame,
+        font=("Helvetica", 15)
+    )
 
-    textbox = ctk.CTkTextbox(frame)
-    textbox.pack(expand=True, fill="both", padx=30, pady=20)
+    chat_box.pack(
+        expand=True,
+        fill="both",
+        padx=30,
+        pady=20
+    )
 
-    knowledge = get_memory()
+    memory = get_memory()
 
-    if knowledge:
+    if len(memory) == 0:
 
-        for question, answer in knowledge.items():
-
-            textbox.insert(
-                "end",
-                f"{question} ➜ {answer}\n\n"
-            )
+        chat_box.insert(
+            "end",
+            "🌸 AURA hasn't learned anything yet."
+        )
 
     else:
 
-        textbox.insert(
-            "end",
-            "AURA hasn't learned anything yet."
-        )
+        for question, answer in memory.items():
 
-    textbox.configure(state="disabled")
+            chat_box.insert(
+                "end",
+                f"❓ {question}\n"
+                f"💖 {answer}\n\n"
+            )
+
+    chat_box.configure(state="disabled")
 
     return frame

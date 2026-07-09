@@ -10,7 +10,7 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 app = ctk.CTk()
-app.title("💖 AURA")
+app.title("💖 AURA • Personal AI Assistant")
 app.geometry("1200x700")
 
 # Sidebar

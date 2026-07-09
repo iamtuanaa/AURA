@@ -9,6 +9,7 @@ def create_chat(parent):
     frame = ctk.CTkFrame(parent)
     frame.pack(expand=True, fill="both")
 
+    # Başlık
     title = ctk.CTkLabel(
         frame,
         text="Hello, Tuana! 🌸",
@@ -16,6 +17,7 @@ def create_chat(parent):
     )
     title.pack(pady=20)
 
+    # Sohbet kutusu
     chat_box = ctk.CTkTextbox(
         frame,
         corner_radius=15,
@@ -29,7 +31,7 @@ def create_chat(parent):
         pady=20
     )
 
-    # Sohbet geçmişini yükle
+    # Geçmişi yükle
     history = load_history()
 
     if history:
@@ -42,7 +44,10 @@ def create_chat(parent):
             "How can I help you today?\n\n"
         )
 
-    # Alt alan
+    # Sohbet kutusunu kilitle
+    chat_box.configure(state="disabled")
+
+    # Alt bölüm
     bottom = ctk.CTkFrame(
         frame,
         fg_color="transparent"
@@ -54,6 +59,7 @@ def create_chat(parent):
         pady=(0, 20)
     )
 
+    # Mesaj kutusu
     entry = ctk.CTkEntry(
         bottom,
         height=40,
@@ -75,26 +81,37 @@ def create_chat(parent):
         if message == "":
             return
 
+        # Yazılabilir yap
+        chat_box.configure(state="normal")
+
+        # Kullanıcı mesajı
         chat_box.insert(
             "end",
-            f"👤 You: {message}\n"
+            f"\n👤 You\n{message}\n\n"
         )
 
         save_message("👤 You", message)
 
+        # AURA cevabı
         answer = process_message(message)
 
         chat_box.insert(
             "end",
-            f"🤖 AURA: {answer}\n\n"
+            f"🤖 AURA\n{answer}\n\n"
         )
 
         save_message("🤖 AURA", answer)
 
-        entry.delete(0, "end")
-
+        # En alta kaydır
         chat_box.see("end")
 
+        # Tekrar kilitle
+        chat_box.configure(state="disabled")
+
+        # Giriş kutusunu temizle
+        entry.delete(0, "end")
+
+    # Gönder butonu
     button = ctk.CTkButton(
         bottom,
         text="💖 Send",
@@ -107,6 +124,7 @@ def create_chat(parent):
 
     button.pack(side="right")
 
+    # Enter ile gönder
     entry.bind("<Return>", lambda event: send())
 
     return frame

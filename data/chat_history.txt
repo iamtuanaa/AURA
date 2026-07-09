@@ -7,3 +7,10 @@ What should I answer next time?
 🤖 AURA: 💖 Thank you! I'll remember that.
 👤 You: favorite singer
 🤖 AURA: Motive
+👤 You: your creator
+🤖 AURA: 🤔 I don't know the answer yet.
+What should I answer next time?
+👤 You: created by Tuana Bilgin
+🤖 AURA: 💖 Thank you! I'll remember that.
+👤 You: who made you
+🤖 AURA: I was created by Tuana Bilgin.
