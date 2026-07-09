@@ -1,0 +1,5 @@
+PINK = "#ff66cc"
+HOVER = "#ff4db8"
+BACKGROUND = "#1f1f1f"
+SIDEBAR = "#242424"
+TEXT = "white"

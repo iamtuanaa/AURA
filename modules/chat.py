@@ -1,14 +1,23 @@
 from modules.brain import get_answer, save_answer
 
+PINK = "\033[95m"
+RESET = "\033[0m"
+CYAN = "\033[96m"
 
 def chat():
 
-    print("\n🤖 Chat Mode")
+    print(PINK)
+    print("══════════════════════════════")
+    print("🤖      AURA CHAT MODE")
+    print("══════════════════════════════")
+    print(RESET)
+
+    print("Type 'exit' to return.\n")
     print("Type 'exit' to return to menu.\n")
 
     while True:
 
-        message = input("You: ")
+        message = input(CYAN + "👤 You: " + RESET)
 
         if message.lower() == "exit":
             print("Leaving chat...\n")
@@ -36,4 +45,4 @@ def chat():
 
         else:
 
-            print(f"🤖 AURA: {answer}")
+            print(PINK + f"🤖 AURA: {answer}" + RESET)
